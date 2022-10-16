@@ -12,7 +12,7 @@ use retrommo_fetch::prelude::*;
 
 ### Available Functions
 
-### `get_leaderboard() -> Leaderboard`
+#### `get_leaderboard() -> Leaderboard`
 
 Returns an iterator over the leaderboard pages.
 
@@ -28,7 +28,7 @@ let page2 = leaderboard.try_next()?;
 println!("Page 2: {:?}", page2);
 ```
 
-### `get_player(username: String)` -> `Result<Player, Error>`
+#### `get_player(username: String)` -> `Result<Player, Error>`
 
 Returns a `Player` struct with the given username.
 
@@ -46,7 +46,7 @@ println!("{:#?}", player);
 // }
 ```
 
-### `get_leaderboard_page(page: u32)` -> `Result<Leaderboard, Error>`
+#### `get_leaderboard_page(page: u32)` -> `Result<Leaderboard, Error>`
 
 Returns a `Leaderboard` struct with all the player entries on the given page. If no page is given *(None)*, the first page is returned.
 
@@ -59,19 +59,19 @@ for entry in page {
 }
 ```
 
-### `get_top_players() -> Result<LeaderboardPage, Error>`
+#### `get_top_players() -> Result<LeaderboardPage, Error>`
 
 Returns a `LeaderboardPage` struct with the top 100 players. This is just an alias for `get_leaderboard_page(None)` or `get_leaderboard_page(Some(1))`.
 
-### `get_online_players()` -> `Result<OnlineList, Error>`
+#### `get_online_players()` -> `Result<OnlineList, Error>`
 
 Returns a `Vec` of players that are currently online. Note that this is only their usernames *(String)*.
 
-### `get_online_players_full()` -> `Result<Vec<Player>, Error>`
+#### `get_online_players_full()` -> `Result<Vec<Player>, Error>`
 
 Returns a `Vec` of `Player` structs that are currently online. Be careful of using this if many players are online, as it may require many requests to the API due to limitations.
 
-### `get_registered_player_count()` -> `Result<u64, Error>`
+#### `get_registered_player_count()` -> `Result<u64, Error>`
 
 Returns the total number of registered players.
 
