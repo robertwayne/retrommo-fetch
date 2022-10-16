@@ -7,6 +7,11 @@ Small Rust wrapper around the [RetroMMO](https://retro-mmo.com) API.
 The library provides a prelude which exports all relevant types and functions.
 
 ```rust
+// Cargo.toml
+[dependencies]
+retrommo-fetch = "0.1.0"
+
+// main.rs
 use retrommo_fetch::prelude::*;
 ```
 
