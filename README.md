@@ -1,5 +1,18 @@
 # retrommo-fetch
 
+<!-- markdownlint-disable -->
+<div align="right">
+<a href="https://crates.io/crates/retrommo-fetch">
+    <img src="https://img.shields.io/crates/v/retrommo-fetch?style=flat-square" alt="crates.io badge">
+</a>
+<a href="https://docs.rs/retrommo-fetch/latest/">
+    <img src="https://img.shields.io/docsrs/retrommo-fetch?style=flat-square" alt="docs.rs badge">
+</a>
+</div>
+<!-- markdownlint-enable -->
+
+---
+
 Small Rust wrapper around the [RetroMMO](https://retro-mmo.com) API.
 
 ## Usage
