@@ -34,7 +34,8 @@ use retrommo_fetch::prelude::*;
 
 Returns an iterator over the leaderboard pages.
 
-*Note: This is a non-async function. If you are calling it within an async context, you must use a blocking thread, like `tokio::task::block_in_place`.*
+*Note: This is a non-async function. If you are calling it within an async
+context, you must use a blocking thread, like `tokio::task::block_in_place`.*
 
 ```rust
 let mut leaderboard = get_leaderboard();
@@ -66,12 +67,12 @@ println!("{:#?}", player);
 
 #### `get_leaderboard_page(page: u32)` -> `Result<Leaderboard, Error>`
 
-Returns a `Leaderboard` struct with all the player entries on the given page. If no page is given *(None)*, the first page is returned.
+Returns a `Leaderboard` struct with all the player entries on the given page.
 
 This is 100 entries per page maximum.
 
 ```rust
-let page = get_leaderboard_page(Some(4)).await?;
+let page = get_leaderboard_page(4).await?;
 for entry in page {
     println!("{:?}", entry);
 }
@@ -79,15 +80,19 @@ for entry in page {
 
 #### `get_top_players() -> Result<LeaderboardPage, Error>`
 
-Returns a `LeaderboardPage` struct with the top 100 players. This is just an alias for `get_leaderboard_page(None)` or `get_leaderboard_page(Some(1))`.
+Returns a `LeaderboardPage` struct with the top 100 players. This is just an
+alias for `get_leaderboard_page(1)`.
 
 #### `get_online_players()` -> `Result<OnlineList, Error>`
 
-Returns a `Vec` of players that are currently online. Note that this is only their usernames *(String)*.
+Returns a `Vec` of players that are currently online. Note that this is only
+their usernames *(String)*.
 
 #### `get_online_players_full()` -> `Result<Vec<Player>, Error>`
 
-Returns a `Vec` of `Player` structs that are currently online. Be careful of using this if many players are online, as it may require many requests to the API due to limitations.
+Returns a `Vec` of `Player` structs that are currently online. Be careful of
+using this if many players are online, as it may require many requests to the
+API due to limitations.
 
 #### `get_registered_player_count()` -> `Result<u64, Error>`
 
