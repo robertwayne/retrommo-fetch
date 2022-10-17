@@ -1,6 +1,6 @@
 [package]
 name = "retrommo-fetch"
-authors = ["Rob Wagner <rob@sombia.com"]
+authors = ["Rob Wagner <rob@sombia.com>"]
 license = "MIT OR Apache-2.0"
 description = "Wrapper around the RetroMMO API."
 repository = "https://github.com/robertwayne/retrommo-fetch"
