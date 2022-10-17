@@ -4,7 +4,7 @@ authors = ["Rob Wagner <rob@sombia.com>"]
 license = "MIT OR Apache-2.0"
 description = "Wrapper around the RetroMMO API."
 repository = "https://github.com/robertwayne/retrommo-fetch"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2021"
 
 [dependencies]
