@@ -22,7 +22,7 @@ The library provides a prelude which exports all relevant types and functions.
 ```rust
 // Cargo.toml
 [dependencies]
-retrommo-fetch = "0.1.0"
+retrommo-fetch = "0.2"
 
 // main.rs
 use retrommo_fetch::prelude::*;
