@@ -1,64 +1,20 @@
 #![doc = include_str!("../README.md")]
 #![forbid(unsafe_code)]
 
+pub mod entry;
 pub mod error;
 pub mod leaderboard;
+pub mod player;
 pub mod prelude;
 
-use chrono::{DateTime, Utc};
-use leaderboard::Leaderboard;
 use reqwest::StatusCode;
-use serde::{Deserialize, Serialize};
 
-use crate::error::Error;
+use crate::{entry::LeaderboardEntry, error::Error, leaderboard::Leaderboard, player::Player};
 
 pub(crate) const API_URL: &str = "https://play.retro-mmo.com";
 
 pub type OnlineList = Vec<String>;
 pub type LeaderboardPage = Vec<LeaderboardEntry>;
-
-/// Represents a single player entry from a `LeaderboardPage`.
-#[derive(Debug, Deserialize, Serialize)]
-pub struct LeaderboardEntry {
-    pub experience: u64,
-    pub permissions: u8,
-    pub username: String,
-}
-
-impl std::fmt::Display for LeaderboardEntry {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}: {} experience", self.username, self.experience)
-    }
-}
-
-/// Represents a single player. Note that this struct is NOT the same as the one
-/// returned by leaderboard resulsts. This is explicitly when requesting a
-/// specific player, and contains much more information.
-#[derive(Debug, Deserialize, Serialize)]
-#[serde(rename_all = "camelCase")]
-pub struct Player {
-    pub rank: u64,
-    pub registered_at: DateTime<Utc>,
-    pub username: String,
-    pub time_played: f64,
-    pub permissions: u8,
-    pub lifetime_experience: u64,
-}
-
-impl std::fmt::Display for Player {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(
-            f,
-            "Username: {}\nExperience{} ({})\nRegistered: {}, Time Played: {}, Permission Rank: {}",
-            self.username,
-            self.lifetime_experience,
-            self.rank,
-            self.registered_at,
-            self.time_played,
-            self.permissions
-        )
-    }
-}
 
 /// Returns a specific player by their username.
 pub async fn get_player(username: &str) -> Result<Player, Error> {
@@ -195,6 +151,8 @@ pub fn get_leaderboard() -> Leaderboard {
 
 #[cfg(test)]
 mod tests {
+    use chrono::DateTime;
+
     use super::*;
 
     #[tokio::test]

@@ -1,3 +1,5 @@
+use reqwest::blocking::Client;
+
 use crate::{LeaderboardEntry, LeaderboardPage, API_URL};
 
 /// Leaderboard is an iterator over the leaderboard pages. Each time `try_next`
@@ -26,7 +28,7 @@ use crate::{LeaderboardEntry, LeaderboardPage, API_URL};
 /// }
 /// ```
 pub struct Leaderboard {
-    client: reqwest::blocking::Client,
+    client: Client,
     entries: <Vec<LeaderboardEntry> as IntoIterator>::IntoIter,
     page: u32,
 }
@@ -45,7 +47,7 @@ impl Iterator for Leaderboard {
 
 impl Leaderboard {
     pub fn new() -> Self {
-        Self { client: reqwest::blocking::Client::new(), entries: Vec::new().into_iter(), page: 0 }
+        Self { client: Client::new(), entries: Vec::new().into_iter(), page: 0 }
     }
 
     pub fn try_next(&mut self) -> reqwest::Result<Option<LeaderboardPage>> {
